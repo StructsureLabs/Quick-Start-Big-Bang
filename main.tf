@@ -26,9 +26,14 @@ variable create_flux_system_ns {
   default = true
 }
 
-output "istio_gw_ip" {
+output "external_load_balancer_ip" {
   value = module.big_bang.external_load_balancer.ip
 }
+
+output "external_load_balancer_hostname" {
+  value = module.big_bang.external_load_balancer.hostname
+}
+
 module "big_bang" {
   source = "git::https://github.com/StructsureLabs/big-bang-infrastructure-terraform-launcher.git?ref=allow-namespaces-already-exist"
 
