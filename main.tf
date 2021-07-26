@@ -16,6 +16,16 @@ variable "kube_conf_file" {
     default = "~/.kube/config"
 }
 
+variable create_bigbang_ns {
+  type = bool
+  default = true
+}
+
+variable create_flux_system_ns {
+  type = bool
+  default = true
+}
+
 output "istio_gw_ip" {
   value = module.big_bang.external_load_balancer.ip
 }
@@ -30,4 +40,6 @@ module "big_bang" {
   }]
   reduce_flux_resources = var.reduce_flux_resources
   kube_conf_file = var.kube_conf_file
+  create_flux_system_ns = var.create_flux_system_ns
+  create_bigbang_ns = var.create_bigbang_ns
 }
